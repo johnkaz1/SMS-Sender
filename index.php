@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = 'johnkaz';
-    $password = 'Texnologia6!';
+    $password = 'SMSposi!1';
     $from = urlencode('mysite');
     $to = '306971745355';
     $text = urlencode('Hello Giannis');
