@@ -2,8 +2,8 @@
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = 'johnkaz';
-    $password = 'SMSposi!1';
+    $username = 'name';
+    $password = 'password';
     $from = urlencode('mysite');
 
     $to = isset($_POST['phone']) ? urlencode(trim($_POST['phone'])) : '';
@@ -14,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $url = "http://www.smsbox.gr/httpapi/sendsms.php?coding=UTF8&username=$username&password=$password&from=$from&to=$to&text=$text";
 
         $response = file_get_contents($url);
-        $message = "Απάντηση από server: " . htmlspecialchars($response);
+        $message = "Response from server: " . htmlspecialchars($response);
     } else {
-        $message = "Παρακαλώ εισάγετε όνομα και αριθμό τηλεφώνου.";
+        $message = "Please enter phone number.";
     }
 }
 ?>
@@ -25,25 +25,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="el">
 <head>
     <meta charset="UTF-8">
-    <title>Αποστολή SMS</title>
+    <title>SMS SENDER</title>
 </head>
 <body>
-    <h2>Αποστολή SMS με SMSBOX</h2>
+    <h2>SMS SENDING VIA SMSBOX</h2>
 
     <?php if (!empty($message)): ?>
         <p><strong><?= $message ?></strong></p>
     <?php endif; ?>
 
     <form method="POST">
-        <label for="user">Όνομα χρήστη:</label>
+        <label for="user">Username:</label>
         <input type="text" id="user" name="user" placeholder="Γράψτε όνομα" required>
         <br><br>
 
-        <label for="phone">Αριθμός τηλεφώνου:</label>
+            <label for="phone">Phone Number:</label>
         <input type="text" id="phone" name="phone" placeholder="Γράψτε αριθμό τηλεφώνου" required>
         <br><br>
 
-        <button type="submit">Στείλε SMS</button>
+        <button type="submit">Send SMS</button>
     </form>
 </body>
 </html>
